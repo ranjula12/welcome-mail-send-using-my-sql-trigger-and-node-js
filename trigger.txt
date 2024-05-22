@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE TRIGGER after_user_insert
+AFTER INSERT ON login
+FOR EACH ROW
+BEGIN
+    INSERT INTO email_log (recipient_email) VALUES (NEW.email);
+END;
+//
+DELIMITER ;
